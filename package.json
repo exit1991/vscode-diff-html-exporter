@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "vscode-diff-html-exporter.helloWorld",
-        "title": "Hello World"
+        "command": "vscode-diff-html-exporter.exportHtml",
+        "title": "Export Diff to HTML"
       }
     ]
   },
