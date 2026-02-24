@@ -15,7 +15,7 @@
     "commands": [
       {
         "command": "vscode-diff-html-exporter.exportHtml",
-        "title": "Export Diff to HTML",
+        "title": "Diff: Export HTML",
         "icon": "$(export)"
       }
     ],
@@ -32,6 +32,12 @@
           "command": "vscode-diff-html-exporter.exportHtml",
           "when": "isInDiffEditor",
           "group": "navigation@10"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "vscode-diff-html-exporter.exportHtml",
+          "when": "isInDiffEditor"
         }
       ]
     }
