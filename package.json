@@ -15,7 +15,7 @@
     "commands": [
       {
         "command": "vscode-diff-html-exporter.exportHtml",
-        "title": "Diff: Export HTML",
+        "title": "%command.exportHtml%",
         "icon": "$(export)"
       }
     ],
@@ -42,6 +42,7 @@
       ]
     }
   },
+  "l10n": "./l10n",
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",

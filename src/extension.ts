@@ -9,7 +9,9 @@ export function activate(context: vscode.ExtensionContext) {
       const tab = vscode.window.tabGroups.activeTabGroup.activeTab;
 
       if (!(tab?.input instanceof vscode.TabInputTextDiff)) {
-        vscode.window.showErrorMessage('Diff画面で実行してください');
+        vscode.window.showErrorMessage(
+          vscode.l10n.t('Run this command in a diff editor'),
+        );
         return;
       }
 
@@ -37,7 +39,7 @@ export function activate(context: vscode.ExtensionContext) {
 
       const uri = await vscode.window.showSaveDialog({
         filters: { HTML: ['html'] },
-        saveLabel: 'Export Diff HTML',
+        saveLabel: vscode.l10n.t('Export'),
       });
 
       if (!uri) {
@@ -48,7 +50,7 @@ export function activate(context: vscode.ExtensionContext) {
 
       await vscode.workspace.fs.writeFile(uri, Buffer.from(themedHtmlOutput));
 
-      vscode.window.showInformationMessage('HTMLを出力しました');
+      vscode.window.showInformationMessage(vscode.l10n.t('HTML exported'));
     },
   );
 
