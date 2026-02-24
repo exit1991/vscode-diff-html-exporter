@@ -44,13 +44,35 @@ export function activate(context: vscode.ExtensionContext) {
         return;
       }
 
-      await vscode.workspace.fs.writeFile(uri, Buffer.from(htmlOutput));
+      const themedHtmlOutput = wrapHtml(htmlOutput);
+
+      await vscode.workspace.fs.writeFile(uri, Buffer.from(themedHtmlOutput));
 
       vscode.window.showInformationMessage('HTMLを出力しました');
     },
   );
 
   context.subscriptions.push(disposable);
+}
+
+function wrapHtml(html: string) {
+  return `
+  <!doctype html>
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>diff2html</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css" />
+    </head>
+    <body>
+      <div>
+        ${html}
+      </div>
+    </body>
+  </html>
+  `;
 }
 
 export function deactivate() {}
