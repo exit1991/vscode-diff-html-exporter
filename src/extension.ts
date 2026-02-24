@@ -1,15 +1,15 @@
-import * as vscode from "vscode";
-import { createTwoFilesPatch } from "diff";
-import { html } from "diff2html";
+import * as vscode from 'vscode';
+import { createTwoFilesPatch } from 'diff';
+import { html } from 'diff2html';
 
 export function activate(context: vscode.ExtensionContext) {
   const disposable = vscode.commands.registerCommand(
-    "vscode-diff-html-exporter.exportHtml",
+    'vscode-diff-html-exporter.exportHtml',
     async () => {
       const tab = vscode.window.tabGroups.activeTabGroup.activeTab;
 
       if (!(tab?.input instanceof vscode.TabInputTextDiff)) {
-        vscode.window.showErrorMessage("Diff画面で実行してください");
+        vscode.window.showErrorMessage('Diff画面で実行してください');
         return;
       }
 
@@ -26,18 +26,18 @@ export function activate(context: vscode.ExtensionContext) {
         leftUri.path,
         rightUri.path,
         leftText,
-        rightText
+        rightText,
       );
 
       const htmlOutput = html(patch, {
         drawFileList: true,
-        matching: "lines",
-        outputFormat: "side-by-side"
+        matching: 'lines',
+        outputFormat: 'side-by-side',
       });
 
       const uri = await vscode.window.showSaveDialog({
-        filters: { HTML: ["html"] },
-        saveLabel: "Export Diff HTML"
+        filters: { HTML: ['html'] },
+        saveLabel: 'Export Diff HTML',
       });
 
       if (!uri) {
@@ -46,8 +46,8 @@ export function activate(context: vscode.ExtensionContext) {
 
       await vscode.workspace.fs.writeFile(uri, Buffer.from(htmlOutput));
 
-      vscode.window.showInformationMessage("HTMLを出力しました");
-    }
+      vscode.window.showInformationMessage('HTMLを出力しました');
+    },
   );
 
   context.subscriptions.push(disposable);

@@ -64,3 +64,65 @@ F5 を押します。
 - Cmd + Shift + P
 - Export Diff to HTML
 - HTMLが出力されます。
+
+
+# フォーマッターの導入
+フォーマッターとして Prettier を導入する。  
+VS Code 側で導入する。  
+
+## VS Code 拡張機能の導入
+以下のVSCode拡張機能をインストールする。
+
+- Prettier - Code formatter
+  - ID: esbenp.prettier-vscode
+
+## 保存時に自動でフォーマットするように設定変更
+- VS Code の設定を変更すると、保存時に自動で Prettier のフォーマットを行うことができるようになる。
+- 今回は JavaScript、 TypeScript（念の為）、JSON、コメント付きJSON に対してフォーマットするようにする。
+- `.vscode/settings.json` に以下を追加する（`.vscode`フォルダが無ければ追加する）。
+
+```json
+{
+  〜 (省略) 〜
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[json]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  〜 (省略) 〜
+}
+```
+
+## Prettier 用設定ファイル配置
+### .prettierrc （フォーマット設定ファイル）
+- プロジェクトのトップに `.prettierrc` を作成する
+- 以下の内容を追加する
+
+```json
+{
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true
+}
+```
+
+### .prettierignore （フォーマット除外対象設定ファイル）
+- プロジェクトのトップに `.prettierignore` を作成する
+- 以下の内容を追加する（他にも除外したいものがあったら追加する）
+
+```
+node_modules
+package.json
+package-lock.json
+```
