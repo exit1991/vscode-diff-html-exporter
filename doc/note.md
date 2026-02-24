@@ -18,7 +18,7 @@ yo code
 # ? What's the identifier of your extension? vscode-diff-html-exporter
 # ? What's the description of your extension? 
 # ? Initialize a git repository? No
-# ? Which bundler to use? unbundled
+# ? Which bundler to use? esbuild
 # ? Which package manager to use? npm
 ```
 
