@@ -37,7 +37,29 @@ export function activate(context: vscode.ExtensionContext) {
         outputFormat: 'side-by-side',
       });
 
+      // デフォルトのファイル名を生成
+      const leftFileName =
+        leftUri.path
+          .split('/')
+          .pop()
+          ?.replace(/\.[^.]+$/, '') || 'left';
+      const rightFileName =
+        rightUri.path
+          .split('/')
+          .pop()
+          ?.replace(/\.[^.]+$/, '') || 'right';
+      const fileTitle = `${leftFileName}_vs_${rightFileName}`;
+      const defaultHtmlFileName = `${fileTitle}.html`;
+
+      // 保存場所のデフォルトを設定（右側のファイルのディレクトリを基準）
+      const defaultDir =
+        rightUri.scheme === 'file'
+          ? vscode.Uri.joinPath(rightUri, '..', defaultHtmlFileName)
+          : vscode.Uri.file(defaultHtmlFileName);
+      const defaultUri = defaultDir;
+
       const uri = await vscode.window.showSaveDialog({
+        defaultUri: defaultUri,
         filters: { HTML: ['html'] },
         saveLabel: vscode.l10n.t('Export'),
       });
@@ -46,7 +68,7 @@ export function activate(context: vscode.ExtensionContext) {
         return;
       }
 
-      const themedHtmlOutput = wrapHtml(htmlOutput);
+      const themedHtmlOutput = wrapHtml(htmlOutput, fileTitle);
 
       await vscode.workspace.fs.writeFile(uri, Buffer.from(themedHtmlOutput));
 
@@ -57,14 +79,14 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(disposable);
 }
 
-function wrapHtml(html: string) {
+function wrapHtml(html: string, title: string) {
   return `
   <!doctype html>
   <html>
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>diff2html</title>
+      <title>${title}</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css" />
     </head>
