@@ -1,11 +1,19 @@
 {
   "name": "vscode-diff-html-exporter",
-  "displayName": "vscode-diff-html-exporter",
-  "description": "",
+  "displayName": "Diff HTML Exporter",
+  "description": "Export diff editor content as HTML",
+  "publisher": "hdeg",
   "version": "0.0.1",
+  "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.109.0"
   },
+  "keywords": [
+    "diff",
+    "html",
+    "compare",
+    "export"
+  ],
   "categories": [
     "Other"
   ],
