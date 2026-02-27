@@ -1,5 +1,7 @@
 # Change Log
 
+English | [日本語](CHANGELOG.ja.md)
+
 All notable changes to the "vscode-diff-html-exporter" extension will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](https://semver.org/).
