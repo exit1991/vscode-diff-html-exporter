@@ -36,6 +36,13 @@ None at this time. Please report issues on the GitHub repository.
 
 See [CHANGELOG.md](CHANGELOG.md) for detailed release notes.
 
+### 0.0.2
+
+Improvements and fixes:
+- Added Japanese user-facing documentation
+- Adjusted right-click context menu placement and export settings
+- Fixed display text and Japanese messages
+
 ### 0.0.1
 
 Initial release:

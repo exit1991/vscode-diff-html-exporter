@@ -6,6 +6,24 @@ All notable changes to the "vscode-diff-html-exporter" extension will be documen
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.0.2] - 2026-02-27
+
+### Added
+
+- Added Japanese user-facing documentation
+
+### Changed
+
+- Cleaned up obsolete descriptions in README
+- Improved right-click context menu placement
+- Adjusted export settings for comparison results
+
+### Fixed
+
+- Updated display text to match the extension title
+- Fixed output so file paths are not included
+- Corrected Japanese messages
+
 ## [0.0.1] - 2026-02-27
 
 ### Added
