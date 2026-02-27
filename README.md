@@ -1,4 +1,4 @@
-# Diff HTML Exporter
+# Diff Exporter
 
 A Visual Studio Code extension that allows you to export diff editor content as a beautiful HTML file.
 
