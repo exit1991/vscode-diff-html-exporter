@@ -1,71 +1,53 @@
-# vscode-diff-html-exporter README
+# Diff HTML Exporter
 
-This is the README for your extension "vscode-diff-html-exporter". After writing up a brief description, we recommend including the following sections.
+A Visual Studio Code extension that allows you to export diff editor content as a beautiful HTML file.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- **Export Diff to HTML**: Convert your diff editor comparisons into a standalone HTML file
+- **Side-by-Side View**: Output includes a side-by-side comparison view for easy reading
+- **File List**: Generated HTML includes a file list for quick navigation
+- **Standalone Output**: The exported HTML file includes all necessary styling via CDN
+- **Multi-language Support**: Interface available in English and Japanese
 
-For example if there is an image subfolder under your extension project workspace:
+## Usage
 
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+1. Open two files in VS Code's diff editor (compare mode)
+2. Click the export icon in the editor title bar, or
+3. Right-click in the editor and select "Diff Exporter: Export Diff to HTML", or
+4. Open the Command Palette (`Cmd+Shift+P` on macOS or `Ctrl+Shift+P` on Windows/Linux) and search for "Diff Exporter: Export Diff to HTML"
+5. Choose the location and filename for the exported HTML file
+6. Open the generated HTML file in any web browser to view the diff
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- Visual Studio Code version 1.109.0 or higher
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+This extension does not add any VS Code settings.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+None at this time. Please report issues on the GitHub repository.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+See [CHANGELOG.md](CHANGELOG.md) for detailed release notes.
 
-### 1.0.0
+### 0.0.1
 
-Initial release of ...
+Initial release:
+- Export diff editor content as HTML
+- Side-by-side comparison view
+- Multi-language support (English/Japanese)
 
-### 1.0.1
+## Technologies
 
-Fixed issue #.
+This extension uses the following libraries:
+- [diff](https://www.npmjs.com/package/diff) - Create text diffs
+- [diff2html](https://www.npmjs.com/package/diff2html) - Generate beautiful HTML diffs
 
-### 1.1.0
+## License
 
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+See LICENSE file for details.
