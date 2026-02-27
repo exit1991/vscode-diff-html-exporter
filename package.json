@@ -4,6 +4,7 @@
   "description": "Export diff editor content as HTML",
   "publisher": "hdeg",
   "version": "0.0.1",
+  "license": "MIT",
   "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.109.0"
