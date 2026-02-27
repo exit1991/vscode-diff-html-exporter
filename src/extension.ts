@@ -39,8 +39,8 @@ export function activate(context: vscode.ExtensionContext) {
 
       // diffをHTMLに変換
       const htmlOutput = Diff2html.html(patch, {
-        drawFileList: true,
-        matching: 'lines',
+        drawFileList: false,
+        matching: 'words',
         outputFormat: 'side-by-side',
       });
 
