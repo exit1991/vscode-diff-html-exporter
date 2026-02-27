@@ -126,3 +126,62 @@ node_modules
 package.json
 package-lock.json
 ```
+
+# リリース
+## vsce インストール（初回のみ）
+VS Code拡張の公開ツールです。
+
+```shell
+# vsceインストール
+npm install -g vsce
+
+# バージョンを表示してインストール出来たかを確認
+vsce --version
+```
+
+## vsce ログイン（初回のみ）
+
+```shell
+vsce login <publisher>
+# → パーソナルアクセストークンを入力
+```
+
+## パッケージ作成
+
+```shell
+# パッケージ作成
+vsce package
+```
+
+- `.vsix` ファイルができる
+- サイズチェック：理想 1MB〜5MB
+
+## ローカルテスト
+
+```shell
+code --install-extension xxx.vsix
+```
+
+## 公開
+
+```shell
+vsce publish
+```
+
+## バージョンアップ
+
+以下のコマンドを実行で `0.0.1` → `0.0.2` の用に変化する。
+
+```shell
+vsce publish patch
+
+# または
+vsce publish minor
+vsce publish major
+```
+
+## 非公開
+
+```shell
+vsce unpublish パブリッシャーID.拡張機能
+```
