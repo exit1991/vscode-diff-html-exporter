@@ -14,8 +14,8 @@ A Visual Studio Code extension that allows you to export diff editor content as 
 
 1. Open two files in VS Code's diff editor (compare mode)
 2. Click the export icon in the editor title bar, or
-3. Right-click in the editor and select "Diff Exporter: Export Diff to HTML", or
-4. Open the Command Palette (`Cmd+Shift+P` on macOS or `Ctrl+Shift+P` on Windows/Linux) and search for "Diff Exporter: Export Diff to HTML"
+3. Right-click in the editor and select "Diff HTML Exporter: Export Diff to HTML", or
+4. Open the Command Palette (`Cmd+Shift+P` on macOS or `Ctrl+Shift+P` on Windows/Linux) and search for "Diff HTML Exporter: Export Diff to HTML"
 5. Choose the location and filename for the exported HTML file
 6. Open the generated HTML file in any web browser to view the diff
 
