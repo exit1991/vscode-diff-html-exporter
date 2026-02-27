@@ -48,7 +48,7 @@
         {
           "command": "vscode-diff-html-exporter.exportHtml",
           "when": "isInDiffEditor",
-          "group": "navigation@10"
+          "group": "2_diffhtmlexporter@1"
         }
       ],
       "commandPalette": [
