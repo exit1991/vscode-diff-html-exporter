@@ -176,7 +176,7 @@ vsce publish
 
 ## バージョンアップ
 
-以下のコマンドを実行で `0.0.1` → `0.0.2` の用に変化する。
+以下のコマンドを実行で `0.0.1` → `0.0.2` の様に変化する。
 
 ```shell
 vsce publish patch
@@ -185,6 +185,14 @@ vsce publish patch
 vsce publish minor
 vsce publish major
 ```
+
+実行すると次の処理が行われる。
+
+（※CHANGELOG.md などは先に更新する）
+
+- package.json の version が自動更新
+- .vsix 作成
+- Marketplace に公開
 
 ## 非公開
 
