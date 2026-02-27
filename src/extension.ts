@@ -25,10 +25,14 @@ export function activate(context: vscode.ExtensionContext) {
       const leftText = leftDoc.getText();
       const rightText = rightDoc.getText();
 
+      // デフォルトのファイル名を生成
+      const leftFileName = extractBaseFileName(leftUri) ?? 'left';
+      const rightFileName = extractBaseFileName(rightUri) ?? 'right';
+
       // diffを生成
       const patch = createTwoFilesPatch(
-        leftUri.path,
-        rightUri.path,
+        leftFileName,
+        rightFileName,
         leftText,
         rightText,
       );
@@ -40,17 +44,7 @@ export function activate(context: vscode.ExtensionContext) {
         outputFormat: 'side-by-side',
       });
 
-      // デフォルトのファイル名を生成
-      const leftFileName =
-        leftUri.path
-          .split('/')
-          .pop()
-          ?.replace(/\.[^.]+$/, '') || 'left';
-      const rightFileName =
-        rightUri.path
-          .split('/')
-          .pop()
-          ?.replace(/\.[^.]+$/, '') || 'right';
+      // デフォルトのHTMLファイル名を生成
       const fileTitle = `${leftFileName}_vs_${rightFileName}`;
       const defaultHtmlFileName = `${fileTitle}.html`;
 
@@ -83,6 +77,18 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   context.subscriptions.push(disposable);
+}
+
+/**
+ * ファイルパスから拡張子を除いたベースファイル名を抽出する
+ * @param uri ファイルのURI
+ * @returns 拡張子を除いたベースファイル名、または抽出できない場合はundefined
+ */
+function extractBaseFileName(uri: vscode.Uri): string | undefined {
+  return uri.path
+    .split('/')
+    .pop()
+    ?.replace(/\.[^.]+$/, '');
 }
 
 /**
