@@ -4,6 +4,12 @@ English | [日本語](README.ja.md)
 
 A Visual Studio Code extension that allows you to export diff editor content as a beautiful HTML file.
 
+![Extension usage demo](resources/demo/demo.gif)
+
+**After HTML export**
+
+![Exported HTML example](resources/demo/exported.png)
+
 ## Features
 
 - **Export Diff to HTML**: Convert your diff editor comparisons into a standalone HTML file

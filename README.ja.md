@@ -4,6 +4,12 @@
 
 Visual Studio Codeの差分エディタの内容を、HTMLファイルとしてエクスポートできる拡張機能です。
 
+![拡張機能の使用イメージ](resources/demo/demo.gif)
+
+**HTML出力後**
+
+![出力後のHTMLイメージ](resources/demo/exported.png)
+
 ## 機能
 
 - **差分をHTMLへエクスポート**: 差分エディタでの比較内容をスタンドアロンのHTMLファイルに変換
