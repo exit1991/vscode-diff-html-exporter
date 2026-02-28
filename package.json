@@ -3,7 +3,7 @@
   "displayName": "Diff HTML Exporter",
   "description": "Export diff editor content as HTML",
   "publisher": "hdeg",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "icon": "resources/icon.png",
   "engines": {
