@@ -6,7 +6,7 @@
 
 このフォーマットは [Keep a Changelog](http://keepachangelog.com/) に基づいており、このプロジェクトは [セマンティックバージョニング](https://semver.org/) に準拠しています。
 
-## [Unreleased] @todo
+## [0.0.4] - 2026-03-07
 
 ### 修正
 

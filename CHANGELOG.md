@@ -6,7 +6,7 @@ All notable changes to the "vscode-diff-html-exporter" extension will be documen
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](https://semver.org/).
 
-## [Unreleased] @todo
+## [0.0.4] - 2026-03-07
 
 ### Fixed
 
