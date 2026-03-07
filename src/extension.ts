@@ -30,7 +30,7 @@ export function activate(context: vscode.ExtensionContext) {
       const rightFileName = extractBaseFileName(rightUri) ?? 'right';
 
       // diffを生成
-      const patch = createTwoFilesPatch(
+      const patch = createFullContextPatch(
         leftFileName,
         rightFileName,
         leftText,
@@ -89,6 +89,27 @@ function extractBaseFileName(uri: vscode.Uri): string | undefined {
     .split('/')
     .pop()
     ?.replace(/\.[^.]+$/, '');
+}
+
+/**
+ * HTMLエクスポート用に、未変更行を含むフルコンテキストの unified diff を生成する
+ */
+export function createFullContextPatch(
+  leftFileName: string,
+  rightFileName: string,
+  leftText: string,
+  rightText: string,
+): string {
+  return createTwoFilesPatch(
+    leftFileName,
+    rightFileName,
+    leftText,
+    rightText,
+    undefined,
+    undefined,
+    // 末尾を含む未変更行も全て出力できるように、コンテキストを実質無制限にする
+    { context: Number.MAX_SAFE_INTEGER },
+  );
 }
 
 /**
