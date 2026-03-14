@@ -132,6 +132,22 @@ function wrapBaseHtml(html: string, title: string) {
       <div>
         ${html}
       </div>
+      <script>
+          // Synchronize scroll
+          document.querySelectorAll('.d2h-files-diff').forEach(diffGroup => {
+              const diffs = diffGroup.querySelectorAll('.d2h-file-side-diff');
+              diffGroup.querySelectorAll('.d2h-file-side-diff').forEach(el => {
+                  el.addEventListener('scroll', () => {
+                      const ratio = el.scrollLeft / (el.scrollWidth - el.clientWidth);
+                      diffs.forEach(other => {
+                          if (other !== el) {
+                              other.scrollLeft = ratio * (other.scrollWidth - other.clientWidth);
+                          }
+                      });
+                  });
+              });
+          });
+      </script>
     </body>
   </html>
   `;
