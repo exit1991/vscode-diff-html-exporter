@@ -15,11 +15,9 @@ export function activate(context: vscode.ExtensionContext) {
         return;
       }
 
-      // 左右のURIを取得
+      // 左右のドキュメントを開いてテキストを取得
       const leftUri = tab.input.original;
       const rightUri = tab.input.modified;
-
-      // ドキュメントを開いてテキストを取得
       const leftDoc = await vscode.workspace.openTextDocument(leftUri);
       const rightDoc = await vscode.workspace.openTextDocument(rightUri);
       const leftText = leftDoc.getText();
