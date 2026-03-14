@@ -14,6 +14,7 @@ A Visual Studio Code extension that allows you to export diff editor content as 
 
 - **Export Diff to HTML**: Convert your diff editor comparisons into a standalone HTML file
 - **Side-by-Side View**: Output includes a side-by-side comparison view for easy reading
+- **Synchronized Side Scroll**: In side-by-side diffs, scrolling one side horizontally keeps the other side aligned
 - **Standalone Output**: The exported HTML file includes all necessary styling via CDN
 - **Multi-language Support**: Interface available in English and Japanese
 

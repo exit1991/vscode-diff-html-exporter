@@ -15,11 +15,9 @@ export function activate(context: vscode.ExtensionContext) {
         return;
       }
 
-      // 左右のURIを取得
+      // 左右のドキュメントを開いてテキストを取得
       const leftUri = tab.input.original;
       const rightUri = tab.input.modified;
-
-      // ドキュメントを開いてテキストを取得
       const leftDoc = await vscode.workspace.openTextDocument(leftUri);
       const rightDoc = await vscode.workspace.openTextDocument(rightUri);
       const leftText = leftDoc.getText();
@@ -119,22 +117,52 @@ export function createFullContextPatch(
  * @returns 完成したHTML文字列
  */
 function wrapBaseHtml(html: string, title: string) {
-  return `
-  <!doctype html>
-  <html>
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>${title}</title>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css" />
-    </head>
-    <body>
-      <div>
-        ${html}
-      </div>
-    </body>
-  </html>
-  `;
+  return `<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${title}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css" />
+</head>
+<body>
+<div>
+${html}
+</div>
+<script>
+// Synchronize scroll
+document.querySelectorAll('.d2h-files-diff').forEach(diffGroup => {
+    const diffs = diffGroup.querySelectorAll('.d2h-file-side-diff');
+    let isSyncing = false;
+    diffs.forEach(el => {
+        el.addEventListener('scroll', () => {
+            if (isSyncing) {
+                return;
+            }
+            const maxScroll = el.scrollWidth - el.clientWidth;
+            if (maxScroll <= 0) {
+                return;
+            }
+            const ratio = el.scrollLeft / maxScroll;
+            isSyncing = true;
+            diffs.forEach(other => {
+                if (other === el) {
+                    return;
+                }
+                const otherMaxScroll = other.scrollWidth - other.clientWidth;
+                if (otherMaxScroll <= 0) {
+                    return;
+                }
+                other.scrollLeft = ratio * otherMaxScroll;
+            });
+            isSyncing = false;
+        });
+    });
+});
+</script>
+</body>
+</html>
+`;
 }
 
 export function deactivate() {}
