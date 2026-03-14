@@ -133,14 +133,29 @@ ${html}
 // Synchronize scroll
 document.querySelectorAll('.d2h-files-diff').forEach(diffGroup => {
     const diffs = diffGroup.querySelectorAll('.d2h-file-side-diff');
-    diffGroup.querySelectorAll('.d2h-file-side-diff').forEach(el => {
+    let isSyncing = false;
+    diffs.forEach(el => {
         el.addEventListener('scroll', () => {
-            const ratio = el.scrollLeft / (el.scrollWidth - el.clientWidth);
+            if (isSyncing) {
+                return;
+            }
+            const maxScroll = el.scrollWidth - el.clientWidth;
+            if (maxScroll <= 0) {
+                return;
+            }
+            const ratio = el.scrollLeft / maxScroll;
+            isSyncing = true;
             diffs.forEach(other => {
-                if (other !== el) {
-                    other.scrollLeft = ratio * (other.scrollWidth - other.clientWidth);
+                if (other === el) {
+                    return;
                 }
+                const otherMaxScroll = other.scrollWidth - other.clientWidth;
+                if (otherMaxScroll <= 0) {
+                    return;
+                }
+                other.scrollLeft = ratio * otherMaxScroll;
             });
+            isSyncing = false;
         });
     });
 });
