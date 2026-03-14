@@ -6,6 +6,12 @@ All notable changes to the "vscode-diff-html-exporter" extension will be documen
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.0] - 2026-03-14
+
+### Added
+
+- Added synchronized horizontal scrolling between left and right panes in exported side-by-side HTML diffs
+
 ## [0.0.4] - 2026-03-07
 
 ### Fixed
