@@ -117,38 +117,37 @@ export function createFullContextPatch(
  * @returns 完成したHTML文字列
  */
 function wrapBaseHtml(html: string, title: string) {
-  return `
-  <!doctype html>
-  <html>
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>${title}</title>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css" />
-    </head>
-    <body>
-      <div>
-        ${html}
-      </div>
-      <script>
-          // Synchronize scroll
-          document.querySelectorAll('.d2h-files-diff').forEach(diffGroup => {
-              const diffs = diffGroup.querySelectorAll('.d2h-file-side-diff');
-              diffGroup.querySelectorAll('.d2h-file-side-diff').forEach(el => {
-                  el.addEventListener('scroll', () => {
-                      const ratio = el.scrollLeft / (el.scrollWidth - el.clientWidth);
-                      diffs.forEach(other => {
-                          if (other !== el) {
-                              other.scrollLeft = ratio * (other.scrollWidth - other.clientWidth);
-                          }
-                      });
-                  });
-              });
-          });
-      </script>
-    </body>
-  </html>
-  `;
+  return `<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${title}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css" />
+</head>
+<body>
+<div>
+${html}
+</div>
+<script>
+// Synchronize scroll
+document.querySelectorAll('.d2h-files-diff').forEach(diffGroup => {
+    const diffs = diffGroup.querySelectorAll('.d2h-file-side-diff');
+    diffGroup.querySelectorAll('.d2h-file-side-diff').forEach(el => {
+        el.addEventListener('scroll', () => {
+            const ratio = el.scrollLeft / (el.scrollWidth - el.clientWidth);
+            diffs.forEach(other => {
+                if (other !== el) {
+                    other.scrollLeft = ratio * (other.scrollWidth - other.clientWidth);
+                }
+            });
+        });
+    });
+});
+</script>
+</body>
+</html>
+`;
 }
 
 export function deactivate() {}
